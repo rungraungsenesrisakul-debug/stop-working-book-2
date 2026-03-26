@@ -4634,6 +4634,7 @@
             <strong>Welcome</strong>
             Stop Working<br>Start Playing
           </div>
+          <div class="toc-page-num" data-target="chapter-intro" style="font-family:'Space Mono',monospace;font-size:11px;color:#A8D8A8;font-weight:700;letter-spacing:0.08em;opacity:0.9;cursor:pointer;text-decoration:underline;text-underline-offset:3px;">หน้า —</div>
           <span class="chapter-arrow">→</span>
         </div>
       </a>
@@ -4656,6 +4657,7 @@
             <strong>Academic Shield</strong>
             John Nash<br>Nash Equilibrium
           </div>
+          <div class="toc-page-num" data-target="chapter-1" style="font-family:'Space Mono',monospace;font-size:11px;color:#4A9EFF;font-weight:700;letter-spacing:0.08em;opacity:0.9;cursor:pointer;text-decoration:underline;text-underline-offset:3px;">หน้า —</div>
           <span class="chapter-arrow">→</span>
         </div>
       </a>
@@ -4677,6 +4679,7 @@
             <strong>Academic Shield</strong>
             Flood & Dresher<br>Prisoner's Dilemma
           </div>
+          <div class="toc-page-num" data-target="chapter-2" style="font-family:'Space Mono',monospace;font-size:11px;color:#FF9F4A;font-weight:700;letter-spacing:0.08em;opacity:0.9;cursor:pointer;text-decoration:underline;text-underline-offset:3px;">หน้า —</div>
           <span class="chapter-arrow">→</span>
         </div>
       </a>
@@ -4698,6 +4701,7 @@
             <strong>Academic Shield</strong>
             Leonid Hurwicz<br>Mechanism Design
           </div>
+          <div class="toc-page-num" data-target="chapter-3" style="font-family:'Space Mono',monospace;font-size:11px;color:#4AFF9E;font-weight:700;letter-spacing:0.08em;opacity:0.9;cursor:pointer;text-decoration:underline;text-underline-offset:3px;">หน้า —</div>
           <span class="chapter-arrow">→</span>
         </div>
       </a>
@@ -4719,6 +4723,7 @@
             <strong>Academic Shield</strong>
             Michael Spence<br>Signaling Theory
           </div>
+          <div class="toc-page-num" data-target="chapter-4" style="font-family:'Space Mono',monospace;font-size:11px;color:#C96EFF;font-weight:700;letter-spacing:0.08em;opacity:0.9;cursor:pointer;text-decoration:underline;text-underline-offset:3px;">หน้า —</div>
           <span class="chapter-arrow">→</span>
         </div>
       </a>
@@ -4740,6 +4745,7 @@
             <strong>Academic Shield</strong>
             George Akerlof<br>Market for Lemons
           </div>
+          <div class="toc-page-num" data-target="chapter-5" style="font-family:'Space Mono',monospace;font-size:11px;color:#FF6B6B;font-weight:700;letter-spacing:0.08em;opacity:0.9;cursor:pointer;text-decoration:underline;text-underline-offset:3px;">หน้า —</div>
           <span class="chapter-arrow">→</span>
         </div>
       </a>
@@ -4761,6 +4767,7 @@
             <strong>Academic Shield</strong>
             Nash & Schelling<br>Bargaining Solution
           </div>
+          <div class="toc-page-num" data-target="chapter-6" style="font-family:'Space Mono',monospace;font-size:11px;color:#FFD94A;font-weight:700;letter-spacing:0.08em;opacity:0.9;cursor:pointer;text-decoration:underline;text-underline-offset:3px;">หน้า —</div>
           <span class="chapter-arrow">→</span>
         </div>
       </a>
@@ -4782,6 +4789,7 @@
             <strong>Academic Shield</strong>
             Colin Camerer<br>Behavioral Game Theory
           </div>
+          <div class="toc-page-num" data-target="chapter-7" style="font-family:'Space Mono',monospace;font-size:11px;color:#FF70C0;font-weight:700;letter-spacing:0.08em;opacity:0.9;cursor:pointer;text-decoration:underline;text-underline-offset:3px;">หน้า —</div>
           <span class="chapter-arrow">→</span>
         </div>
       </a>
@@ -4803,6 +4811,7 @@
             <strong>Academic Shield</strong>
             James Carse<br>Infinite Games
           </div>
+          <div class="toc-page-num" data-target="chapter-8" style="font-family:'Space Mono',monospace;font-size:11px;color:#70EFFF;font-weight:700;letter-spacing:0.08em;opacity:0.9;cursor:pointer;text-decoration:underline;text-underline-offset:3px;">หน้า —</div>
           <span class="chapter-arrow">→</span>
         </div>
       </a>
@@ -4825,6 +4834,7 @@
             <strong>Final Move</strong>
             Stop Working<br>Start Playing
           </div>
+          <div class="toc-page-num" data-target="chapter-epilogue" style="font-family:'Space Mono',monospace;font-size:11px;color:#C9A84C;font-weight:700;letter-spacing:0.08em;opacity:0.9;cursor:pointer;text-decoration:underline;text-underline-offset:3px;">หน้า —</div>
           <span class="chapter-arrow">→</span>
         </div>
       </a>
@@ -10237,6 +10247,173 @@
 </div>
 
 </div><!-- end .book -->
+
+<!-- ===== A4 PAGE NUMBER SYSTEM ===== -->
+<style>
+  /* Overlay layer that holds all page-number chips */
+  #pn-layer {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    pointer-events: none;
+    z-index: 8000;
+  }
+  .pn-chip {
+    position: absolute;
+    right: 18px;
+    width: 52px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(10,12,20,0.82);
+    border: 1px solid rgba(201,168,76,0.5);
+    border-radius: 5px;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    color: #C9A84C;
+    letter-spacing: 0.06em;
+    backdrop-filter: blur(4px);
+    pointer-events: none;
+  }
+  /* Fixed badge showing current page while scrolling */
+  #pn-fixed {
+    position: fixed;
+    bottom: 24px;
+    right: 28px;
+    background: rgba(10,12,20,0.90);
+    border: 1px solid rgba(201,168,76,0.55);
+    color: #C9A84C;
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 7px 18px;
+    border-radius: 8px;
+    z-index: 9999;
+    letter-spacing: 0.08em;
+    backdrop-filter: blur(6px);
+    pointer-events: none;
+    transition: opacity 0.25s;
+    opacity: 0;
+  }
+</style>
+
+<div id="pn-fixed">หน้า —</div>
+
+<script>
+(function () {
+  /* ── constants ── */
+  var A4_PX = 1122;          // A4 height at 96 dpi  (297mm × 3.7795)
+  var CHIP_BOTTOM_OFFSET = 10; // px from bottom of each A4 band
+
+  /* ── where page-numbered content starts ── */
+  /* Pages 1+ begin at #chapter-intro; cover & TOC are excluded */
+  var startId = 'chapter-intro';
+
+  /* ── build overlay layer anchored to <body> ── */
+  var layer = document.createElement('div');
+  layer.id = 'pn-layer';
+  document.body.appendChild(layer);
+
+  var fixedBadge = document.getElementById('pn-fixed');
+  var totalPages = 0;
+
+  function build() {
+    layer.innerHTML = '';
+
+    var startEl = document.getElementById(startId);
+    if (!startEl) return;
+
+    /* absolute top of the start element (relative to document) */
+    var startTop = startEl.getBoundingClientRect().top + window.scrollY;
+
+    /* total remaining document height from startTop */
+    var docH = document.body.scrollHeight;
+    var contentH = docH - startTop;
+
+    totalPages = Math.ceil(contentH / A4_PX);
+
+    for (var p = 1; p <= totalPages; p++) {
+      var chip = document.createElement('div');
+      chip.className = 'pn-chip';
+
+      /* position: bottom of each A4 band, minus a small margin */
+      var bandBottom = startTop + p * A4_PX - CHIP_BOTTOM_OFFSET;
+      chip.style.top = (bandBottom - 26) + 'px'; // 26 = chip height
+
+      chip.textContent = p;
+      layer.appendChild(chip);
+    }
+  }
+
+  function updateFixed() {
+    var startEl = document.getElementById(startId);
+    if (!startEl) { fixedBadge.style.opacity = '0'; return; }
+
+    var startTop = startEl.getBoundingClientRect().top + window.scrollY;
+    var scrollY   = window.scrollY || window.pageYOffset;
+    var winH      = window.innerHeight;
+    var midY      = scrollY + winH * 0.5;
+
+    if (midY < startTop) {
+      fixedBadge.style.opacity = '0';
+      return;
+    }
+
+    var currentPage = Math.floor((midY - startTop) / A4_PX) + 1;
+    if (currentPage < 1) currentPage = 1;
+    if (currentPage > totalPages) currentPage = totalPages;
+
+    fixedBadge.textContent = 'หน้า ' + currentPage;
+    fixedBadge.style.opacity = '1';
+  }
+
+  /* build after fonts/images settle */
+  /* ── populate TOC page numbers after build() ── */
+  function populateTOC() {
+    var startEl = document.getElementById(startId);
+    if (!startEl) return;
+    var startTop = startEl.getBoundingClientRect().top + window.scrollY;
+
+    document.querySelectorAll('.toc-page-num').forEach(function(el) {
+      var targetId = el.getAttribute('data-target');
+      var targetEl = document.getElementById(targetId);
+      if (!targetEl) return;
+
+      var targetTop = targetEl.getBoundingClientRect().top + window.scrollY;
+      var pageNum = Math.floor((targetTop - startTop) / A4_PX) + 1;
+      if (pageNum < 1) pageNum = 1;
+      el.textContent = 'หน้า ' + pageNum;
+
+      el.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        targetEl.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  }
+
+  window.addEventListener('load', function () {
+    build();
+    populateTOC();
+    updateFixed();
+  });
+
+  /* rebuild on resize (responsive reflow changes heights) */
+  var resizeTimer;
+  window.addEventListener('resize', function () {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function () { build(); updateFixed(); }, 200);
+  });
+
+  window.addEventListener('scroll', updateFixed, { passive: true });
+
+  /* initial build (before load, best-effort) */
+  build();
+  updateFixed();
+})();
+</script>
 
 </body>
 </html>
